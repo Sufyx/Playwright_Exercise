@@ -14,14 +14,12 @@ async function login(req, res) {
     try {
         const userDetails = req.body;
         const confirmation = await verifyUser(userDetails);
-        // console.log("controller login confirmation, ", confirmation);
         res.send({ ok: true, confirmation });
     } catch (err) {
         console.error("Caught: ", err.message);
         res.status(500).send(err);
     }
 }
-
 
 async function getSalariesInfo(req, res) {
     try {
@@ -33,7 +31,6 @@ async function getSalariesInfo(req, res) {
     }
 }
 
-
 async function getDepartmentsInfo(req, res) {
     try {
         const departmentsInfo = await getDepartmentsInfoModel();
@@ -43,7 +40,6 @@ async function getDepartmentsInfo(req, res) {
         res.status(500).send(err);
     }
 }
-
 
 
 module.exports = {

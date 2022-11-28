@@ -16,23 +16,10 @@ app.use(express.json());
 
 app.use("/routes", routes);
 
-async function connectPG() {
-    const sequelize = new Sequelize(config.postgres.options);
-    try {
-        await sequelize.authenticate();
-        console.log("Sequelization successful");
-        return sequelize;
-    } catch (error) {
-        console.error("Connection error: ", error.message);
-    }
-}
-
 
 app.listen(5000, () => {
     console.log('Server listening on port 5000');
 });
-
-
 
 
 app.get("/", async (req, res) => {

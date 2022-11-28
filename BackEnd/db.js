@@ -15,5 +15,3 @@ const pool = new Pool({
 });
 
 module.exports = pool;
-
-// SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Employees';

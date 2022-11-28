@@ -43,14 +43,15 @@ export default function Login({ loginSuccess }) {
 
             <Flex align={'center'} justify={'center'} h='100%'
                 bg={useColorModeValue('gray.100', 'gray.800')} >
-                
+
                 <Stack spacing={8} mx={'auto'} w='30%' >
                     <Box bg={useColorModeValue('white', 'gray.700')}
                         boxShadow={'dark-lg'} rounded={'lg'} p={8}>
-                        <Heading fontSize={'4xl'} mb='15%' className='login-header'>
+                        <Heading fontSize={'4xl'}
+                            mb='15%' className='login-header'>
                             Login
                         </Heading>
-                        
+
                         <Stack spacing={8}>
                             <FormControl id="emp_id">
                                 <FormLabel>Employee ID</FormLabel>
@@ -59,6 +60,7 @@ export default function Login({ loginSuccess }) {
                                     setErrorMessage('');
                                 }} />
                             </FormControl>
+                            
                             <FormControl id="password">
                                 <FormLabel>Password</FormLabel>
                                 <Input type="password" value={userPassword}
@@ -69,15 +71,19 @@ export default function Login({ loginSuccess }) {
                             </FormControl>
 
                             <VStack spacing={2}>
-                                <Text color='red' fontWeight='600' id='loginError'>
+                                <Text color='red'
+                                    fontWeight='600' id='loginError'>
                                     {errorMessage}
                                 </Text>
-                                <Button _hover={{ bg: 'white', color: 'blue.400' }}
-                                    fontSize={'xl'} boxShadow={'outline'} color={'white'}
-                                    onClick={loginClick} bg={'blue.400'} id="submit">
+                                <Button
+                                    _hover={{ bg: 'white', color: 'blue.400' }}
+                                    fontSize={'xl'} boxShadow={'outline'}
+                                    color={'white'} id="submit"
+                                    onClick={loginClick} bg={'blue.400'} >
                                     Login
                                 </Button>
                             </VStack>
+
                         </Stack>
                     </Box>
                 </Stack>

@@ -71,7 +71,8 @@ export default function InfoPage() {
                 dept_number: deptInfo.activeEmployees[i].dept_no,
                 active_employees: deptInfo.activeEmployees[i].count,
                 num_of_salaries_expect: deptInfo.activeEmployees[i].count,
-                monthly_payroll: (Number(deptInfo.yearlyPayroll[i].sum) / 12).toFixed(2),
+                monthly_payroll:
+                    (Number(deptInfo.yearlyPayroll[i].sum) / 12).toFixed(2),
                 yearly_payroll: deptInfo.yearlyPayroll[i].sum
             }
             deptInfoArr.push(line);
@@ -125,7 +126,8 @@ export default function InfoPage() {
                 <VStack py='1%'>
                     <Heading sx={basicHeaders} fontSize='1.7vw'
                         className='headerAlltimeSalaries'>
-                        Fairness by Gender All Time: Workforce Balance and Salary Equality
+                        Fairness by Gender All Time:
+                        Workforce Balance and Salary Equality
                     </Heading>
 
                     <TableContainer py='1%' w='70%'>
@@ -176,7 +178,8 @@ export default function InfoPage() {
                 <VStack py='1%'>
                     <Heading sx={basicHeaders} fontSize='1.7vw'
                         className='headerCurrentSalaries'>
-                        Current Fairness by Gender: Workforce Balance and Salary Equality
+                        Current Fairness by Gender:
+                        Workforce Balance and Salary Equality
                     </Heading>
 
                     <TableContainer py='1%' w='70%'>

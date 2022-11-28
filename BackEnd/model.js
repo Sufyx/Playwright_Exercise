@@ -104,16 +104,19 @@ async function getDepartmentsInfoModel() {
     };
 
     try {
-        const activeEmployees = (await pool.query(
-            `SELECT dept_emp.dept_no, dept_name, COUNT(DISTINCT emp_no) 
-            FROM dept_emp LEFT JOIN Departments ON dept_emp.dept_no = Departments.dept_no 
+        const activeEmployees = (await pool.query(`
+            SELECT dept_emp.dept_no, dept_name, COUNT(DISTINCT emp_no) 
+            FROM dept_emp LEFT JOIN Departments 
+            ON dept_emp.dept_no = Departments.dept_no 
             WHERE to_date > DATE(NOW()) GROUP BY dept_name, dept_emp.dept_no 
             ORDER BY dept_emp.dept_no ASC;`
         )).rows;
-        const yearlyPayroll = (await pool.query(
-            `SELECT dept_no, SUM(salary) 
-            FROM Salaries LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
-            WHERE dept_emp.to_date > DATE(NOW()) AND Salaries.to_date > DATE(NOW()) 
+        const yearlyPayroll = (await pool.query(`
+            SELECT dept_no, SUM(salary) 
+            FROM Salaries LEFT JOIN dept_emp 
+            ON Salaries.emp_no = dept_emp.emp_no 
+            WHERE dept_emp.to_date > DATE(NOW()) 
+            AND Salaries.to_date > DATE(NOW()) 
             GROUP BY dept_no ORDER BY dept_no ASC;`
         )).rows;
 

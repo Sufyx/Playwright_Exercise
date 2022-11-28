@@ -31,9 +31,11 @@ test('info-page elements', async ({ page }) => {
   element = await page.innerText('.headerActiveEmps');
   expect(element).toBe('Active Employees:');
   element = await page.innerText('.headerAlltimeSalaries');
-  expect(element).toBe('Fairness by Gender All Time: Workforce Balance and Salary Equality');
+  expect(element).toBe(
+    'Fairness by Gender All Time: Workforce Balance and Salary Equality');
   element = await page.innerText('.headerCurrentSalaries');
-  expect(element).toBe('Current Fairness by Gender: Workforce Balance and Salary Equality');
+  expect(element).toBe(
+    'Current Fairness by Gender: Workforce Balance and Salary Equality');
   element = await page.innerText('.headerForecast');
   expect(element).toBe('Payroll Forecast');
 });
