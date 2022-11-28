@@ -7,7 +7,6 @@
 const express = require("express");
 const router = express.Router();
 const Controller = require('./controller');
-// const {verifyUser} = require('./middleware');
 
 router.post("/login", Controller.login);
 router.get("/salariesInfo", Controller.getSalariesInfo);

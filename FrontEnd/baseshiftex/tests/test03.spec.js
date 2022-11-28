@@ -161,5 +161,3 @@ test('Departments table yearly payroll', async ({ page }) => {
     page_val = await page.innerHTML('#depts_85>div');
     expect(page_val).toBe("1182134209");
 });
-
-
