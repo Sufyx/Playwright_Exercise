@@ -8,7 +8,7 @@ The implementation is in React, Node and Postgres.
 The testing is in Playwright.
 
 
-# About the tests
+## About the tests
 
 Tests do basic checks, mostly regarding the information retrieved from the server and presented on the page, compared to the information in the database.
 
