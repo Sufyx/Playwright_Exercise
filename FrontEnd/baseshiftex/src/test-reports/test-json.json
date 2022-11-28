@@ -1,0 +1,645 @@
+{
+  "config": {
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/?(*.)@(spec|test).*"
+        ],
+        "timeout": 10000
+      },
+      {
+        "outputDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/?(*.)@(spec|test).*"
+        ],
+        "timeout": 10000
+      },
+      {
+        "outputDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/?(*.)@(spec|test).*"
+        ],
+        "timeout": 10000
+      }
+    ],
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "src/test-reports/test-json.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "configFile": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\playwright.config.js",
+    "rootDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+    "quiet": false,
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.28.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "test02.spec.js",
+      "file": "test02.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "department expected payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1625,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:42:49.604Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87f81d9a213b787145bb-9915196ef6a610ca2ed9",
+          "file": "test02.spec.js",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "department yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 1619,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:42:49.619Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87f81d9a213b787145bb-1c9044633d1b6c37b2c2",
+          "file": "test02.spec.js",
+          "line": 246,
+          "column": 1
+        },
+        {
+          "title": "department expected payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 1648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:02.558Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87f81d9a213b787145bb-7905c9805350d02186cf",
+          "file": "test02.spec.js",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "department yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 1867,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:04.210Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87f81d9a213b787145bb-43b7b65b3ce6afb97f70",
+          "file": "test02.spec.js",
+          "line": 246,
+          "column": 1
+        },
+        {
+          "title": "department expected payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "status": "passed",
+                  "duration": 2350,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:33.138Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87f81d9a213b787145bb-314e99b480874013f873",
+          "file": "test02.spec.js",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "department yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "status": "passed",
+                  "duration": 2154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:35.492Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87f81d9a213b787145bb-d7214a248d2f26308815",
+          "file": "test02.spec.js",
+          "line": 246,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "test03.spec.js",
+      "file": "test03.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Departments table upcoming payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 9871,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:42:51.245Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-9f83bb285613420e45e5",
+          "file": "test03.spec.js",
+          "line": 123,
+          "column": 1
+        },
+        {
+          "title": "Departments table yearly payroll",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "timedOut",
+                  "duration": 10002,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js",
+                        "column": 31,
+                        "line": 145
+                      },
+                      "message": "page.innerHTML: Target closed\n=========================== logs ===========================\nwaiting for locator('#depts_05>div')\n============================================================\n\n\u001b[90m   at \u001b[39mtest03.spec.js:145\n\n\u001b[0m \u001b[90m 143 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m test(\u001b[32m'Departments table yearly payroll'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 145 |\u001b[39m     \u001b[36mlet\u001b[39m page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_05>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 146 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"1188233434\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 147 |\u001b[39m     page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_15>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 148 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"977049936\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js:145:31\u001b[22m"
+                    },
+                    {
+                      "message": "Pending operations:\n  - page.innerHTML at tests\\test03.spec.js:145:31\n"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:42:51.253Z",
+                  "attachments": []
+                },
+                {
+                  "workerIndex": 3,
+                  "status": "timedOut",
+                  "duration": 10003,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js",
+                        "column": 31,
+                        "line": 145
+                      },
+                      "message": "page.innerHTML: Target closed\n=========================== logs ===========================\nwaiting for locator('#depts_05>div')\n============================================================\n\n\u001b[90m   at \u001b[39mtest03.spec.js:145\n\n\u001b[0m \u001b[90m 143 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m test(\u001b[32m'Departments table yearly payroll'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 145 |\u001b[39m     \u001b[36mlet\u001b[39m page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_05>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 146 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"1188233434\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 147 |\u001b[39m     page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_15>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 148 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"977049936\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js:145:31\u001b[22m"
+                    },
+                    {
+                      "message": "Pending operations:\n  - page.innerHTML at tests\\test03.spec.js:145:31\n"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2022-11-28T10:43:02.590Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\test-results\\test03-Departments-table-yearly-payroll-chromium-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-e6a82c6935ccb1862780",
+          "file": "test03.spec.js",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "Departments table upcoming payroll",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "timedOut",
+                  "duration": 10006,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js",
+                        "column": 31,
+                        "line": 124
+                      },
+                      "message": "page.innerHTML: Target closed\n=========================== logs ===========================\nwaiting for locator('#depts_04>div')\n============================================================\n\n\u001b[90m   at \u001b[39mtest03.spec.js:124\n\n\u001b[0m \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 |\u001b[39m test(\u001b[32m'Departments table upcoming payroll'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 |\u001b[39m     \u001b[36mlet\u001b[39m page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_04>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"99019452.83\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m     page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_14>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 127 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"81420828.00\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js:124:31\u001b[22m"
+                    },
+                    {
+                      "message": "Pending operations:\n  - page.innerHTML at tests\\test03.spec.js:124:31\n"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:06.092Z",
+                  "attachments": []
+                },
+                {
+                  "workerIndex": 5,
+                  "status": "timedOut",
+                  "duration": 10001,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js",
+                        "column": 31,
+                        "line": 124
+                      },
+                      "message": "page.innerHTML: Target closed\n=========================== logs ===========================\nwaiting for locator('#depts_04>div')\n============================================================\n\n\u001b[90m   at \u001b[39mtest03.spec.js:124\n\n\u001b[0m \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 |\u001b[39m test(\u001b[32m'Departments table upcoming payroll'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 |\u001b[39m     \u001b[36mlet\u001b[39m page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_04>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"99019452.83\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m     page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_14>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 127 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"81420828.00\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js:124:31\u001b[22m"
+                    },
+                    {
+                      "message": "Pending operations:\n  - page.innerHTML at tests\\test03.spec.js:124:31\n"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2022-11-28T10:43:19.213Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\test-results\\test03-Departments-table-upcoming-payroll-firefox-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-8c439ee3bc58edfb0a04",
+          "file": "test03.spec.js",
+          "line": 123,
+          "column": 1
+        },
+        {
+          "title": "Departments table yearly payroll",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "status": "timedOut",
+                  "duration": 10013,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js",
+                        "column": 31,
+                        "line": 145
+                      },
+                      "message": "page.innerHTML: Target closed\n=========================== logs ===========================\nwaiting for locator('#depts_05>div')\n============================================================\n\n\u001b[90m   at \u001b[39mtest03.spec.js:145\n\n\u001b[0m \u001b[90m 143 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m test(\u001b[32m'Departments table yearly payroll'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 145 |\u001b[39m     \u001b[36mlet\u001b[39m page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_05>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 146 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"1188233434\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 147 |\u001b[39m     page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_15>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 148 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"977049936\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js:145:31\u001b[22m"
+                    },
+                    {
+                      "message": "Pending operations:\n  - page.innerHTML at tests\\test03.spec.js:145:31\n"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:15.128Z",
+                  "attachments": []
+                },
+                {
+                  "workerIndex": 6,
+                  "status": "timedOut",
+                  "duration": 10005,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js",
+                        "column": 31,
+                        "line": 145
+                      },
+                      "message": "page.innerHTML: Target closed\n=========================== logs ===========================\nwaiting for locator('#depts_05>div')\n============================================================\n\n\u001b[90m   at \u001b[39mtest03.spec.js:145\n\n\u001b[0m \u001b[90m 143 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m test(\u001b[32m'Departments table yearly payroll'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 145 |\u001b[39m     \u001b[36mlet\u001b[39m page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_05>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 146 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"1188233434\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 147 |\u001b[39m     page_val \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerHTML(\u001b[32m'#depts_15>div'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 148 |\u001b[39m     expect(page_val)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"977049936\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\tests\\test03.spec.js:145:31\u001b[22m"
+                    },
+                    {
+                      "message": "Pending operations:\n  - page.innerHTML at tests\\test03.spec.js:145:31\n"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2022-11-28T10:43:28.725Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\test-results\\test03-Departments-table-yearly-payroll-firefox-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-5592d989795275cb23b5",
+          "file": "test03.spec.js",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "Departments table upcoming payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "status": "passed",
+                  "duration": 9827,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:37.658Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-d03eab39366fe23ef79d",
+          "file": "test03.spec.js",
+          "line": 123,
+          "column": 1
+        },
+        {
+          "title": "Departments table yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 10000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "status": "passed",
+                  "duration": 8191,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-28T10:43:42.157Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-d95c9057496400a199c2",
+          "file": "test03.spec.js",
+          "line": 144,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
