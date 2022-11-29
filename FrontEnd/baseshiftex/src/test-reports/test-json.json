@@ -1,0 +1,670 @@
+{
+  "config": {
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/?(*.)@(spec|test).*"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/?(*.)@(spec|test).*"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/?(*.)@(spec|test).*"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "src/test-reports/test-json.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "configFile": "C:\\Users\\User\\Workspace\\ITC\\Baseshift Exercise\\BaseShiftEx\\FrontEnd\\baseshiftex\\playwright.config.js",
+    "rootDir": "C:/Users/User/Workspace/ITC/Baseshift Exercise/BaseShiftEx/FrontEnd/baseshiftex/tests",
+    "quiet": false,
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.28.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "test03.spec.js",
+      "file": "test03.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Departments table names",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 8337,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:02.545Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-714187c33d2992f47d7f",
+          "file": "test03.spec.js",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "Departments table numbers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5984,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:11.244Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-3c4c00758b1dfbdae428",
+          "file": "test03.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "Departments table active employees",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 6029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:17.231Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-64691684377d7cd74e61",
+          "file": "test03.spec.js",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "Departments table expected salaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:23.263Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-bcbc5b178250a77201a9",
+          "file": "test03.spec.js",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Departments table upcoming payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:29.249Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-9f83bb285613420e45e5",
+          "file": "test03.spec.js",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "Departments table yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5995,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:35.195Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-e6a82c6935ccb1862780",
+          "file": "test03.spec.js",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "Departments table names",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 8032,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:41.860Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-bef545f9bdf85d4f5d1a",
+          "file": "test03.spec.js",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "Departments table numbers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 6084,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:50.738Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-45bf062faa4fa60de0d6",
+          "file": "test03.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "Departments table active employees",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 5981,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:04:56.826Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-a9da08e0d43aa90dc7f3",
+          "file": "test03.spec.js",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "Departments table expected salaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 5946,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:02.811Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-171923bb74ff470e0bd7",
+          "file": "test03.spec.js",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Departments table upcoming payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 6055,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:08.760Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-8c439ee3bc58edfb0a04",
+          "file": "test03.spec.js",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "Departments table yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 6344,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:14.821Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-5592d989795275cb23b5",
+          "file": "test03.spec.js",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "Departments table names",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 6255,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:22.431Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-4b0b016d0a119ed5e7de",
+          "file": "test03.spec.js",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "Departments table numbers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 6310,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:29.365Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-e319ee5bd37a6130a831",
+          "file": "test03.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "Departments table active employees",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 6237,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:35.678Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-064d9da7c7a5c6eb9a4f",
+          "file": "test03.spec.js",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "Departments table expected salaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 6197,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:41.918Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-16ff76189de981ed24b3",
+          "file": "test03.spec.js",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Departments table upcoming payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 6347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:48.118Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-d03eab39366fe23ef79d",
+          "file": "test03.spec.js",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "Departments table yearly payroll",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 6322,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2022-11-29T11:05:54.467Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbd4897b08a5a744e9d9-d95c9057496400a199c2",
+          "file": "test03.spec.js",
+          "line": 145,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
