@@ -5,7 +5,21 @@
  */
 
 const pool = require('./db');
+const { Sequelize, Model, DataTypes } = require("sequelize");
+const {models, sequelize} = require('./models/index');
+const getEmployeeModel = require('./models/employee');
 
+async function sequelizeTestModel() {
+    try {
+        const emp = await getEmployeeModel();
+        console.log("emp ", emp);
+        // console.log(models.Employee());
+        // const test = await models.Employee.findAll().limit(5);
+        // console.log("test ", test);
+    } catch (err) {
+        console.error("Caught (sequelizeTestModel): ", err.message);
+    }
+}
 
 async function verifyUser(userDetails) {
     if (!userDetails.userID || !userDetails.userPassword) {
@@ -133,5 +147,6 @@ async function getDepartmentsInfoModel() {
 module.exports = {
     getDepartmentsInfoModel,
     getSalariesModel,
-    verifyUser
+    verifyUser,
+    sequelizeTestModel
 }

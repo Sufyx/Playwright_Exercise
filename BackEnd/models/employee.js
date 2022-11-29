@@ -1,7 +1,7 @@
 const getEmployeeModel = ( sequelize, {DataTypes}) => {
-    const User = sequelize.define('employee', {
+    const Employee = sequelize.define('employee', {
         employee_no: {
-            DataTypes: DataTypes.Number,
+            type: DataTypes.INTEGER,
             unique: true,
             allowNull: false,
             validate: {
@@ -9,40 +9,42 @@ const getEmployeeModel = ( sequelize, {DataTypes}) => {
             },
         },
         first_name: {
-            DataTypes: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         last_name: {
-            DataTypes: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         gender: {
-            DataTypes: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         hire_date: {
-            DataTypes: DataTypes.Date,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
+    }, {
+        tableName: "Employees"
     });
 
     Employee.associate = (models) => {
-        Employee.hasMany(models.Salaries, {onDelete: 'CASCADE'});
+        Employee.hasMany(models.Salary, {onDelete: 'CASCADE'});
     };
     Employee.associate = (models) => {
-        Employee.hasMany(models.Departments, {onDelete: 'CASCADE'});
+        Employee.hasMany(models.Department, {onDelete: 'CASCADE'});
     };
 
     Employee.findByLogin = async (login) => {
@@ -51,8 +53,7 @@ const getEmployeeModel = ( sequelize, {DataTypes}) => {
         });
         return emp;
     }
-
     return Employee;
 }
 
-export default getEmployeeModel;
+module.exports = getEmployeeModel;

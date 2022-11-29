@@ -6,9 +6,31 @@
 
 
 const {
-    getSalariesModel, verifyUser, getDepartmentsInfoModel
+    getSalariesModel, verifyUser, 
+    getDepartmentsInfoModel, sequelizeTestModel
 } = require('./model');
 
+async function sequelizeTest(req, res) {
+    console.log("-= sequelizeTest =-");
+    try {
+        const test = await sequelizeTestModel();
+        res.send({ ok: true, test });
+    } catch (err) {
+        console.error("Caught(sequelizeTest): ", err.message);
+        res.status(500).send(err);
+    }
+}
+
+async function login(req, res) {
+    try {
+        const userDetails = req.body;
+        const confirmation = await verifyUser(userDetails);
+        res.send({ ok: true, confirmation });
+    } catch (err) {
+        console.error("Caught: ", err.message);
+        res.status(500).send(err);
+    }
+}
 
 async function login(req, res) {
     try {
@@ -43,5 +65,6 @@ async function getDepartmentsInfo(req, res) {
 
 
 module.exports = {
-    login, getSalariesInfo, getDepartmentsInfo
+    login, getSalariesInfo, 
+    getDepartmentsInfo, sequelizeTest
 };

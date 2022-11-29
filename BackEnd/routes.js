@@ -8,9 +8,11 @@ const express = require("express");
 const router = express.Router();
 const Controller = require('./controller');
 
+router.get("/test", Controller.sequelizeTest);
 router.post("/login", Controller.login);
 router.get("/salariesInfo", Controller.getSalariesInfo);
 router.get("/departmentsInfo", Controller.getDepartmentsInfo);
+
 
 
 module.exports = router;
