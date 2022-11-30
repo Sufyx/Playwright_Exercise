@@ -4,7 +4,8 @@
  * Baseshift interview exercise 
  */
 
-const pool = require('./db');
+const { sequelize, models } = require('./models');
+const { Op } = require("sequelize");
 
 
 async function verifyUser(userDetails) {
@@ -14,13 +15,13 @@ async function verifyUser(userDetails) {
     const emp_no = userDetails.userID;
     const birth_date = new Date(userDetails.userPassword);
     try {
-        const confirmId = await pool.query(
-            `SELECT * FROM Employees WHERE emp_no = ${emp_no};`
-        );
+        const res = await models.Employee.findOne({ where: { emp_no: emp_no } });
+        const confirmId = res.dataValues;
+        
         if (!confirmId) {
             return false;
         }
-        const confirmPassword = new Date(confirmId.rows[0].birth_date);
+        const confirmPassword = new Date(confirmId.birth_date);
         if (confirmPassword.toDateString() != birth_date.toDateString()) {
             return false;
         }
@@ -44,52 +45,69 @@ async function getSalariesModel() {
         f_sal_count_total: 0
     }
     try {
-        info.m_emp_count_total = (await pool.query(
-            `SELECT COUNT(emp_no) FROM Employees WHERE gender='M';`
-        )).rows[0].count;
-        info.f_emp_count_total = (await pool.query(
-            `SELECT COUNT(emp_no) FROM Employees WHERE gender='F';`
-        )).rows[0].count;
-        info.m_emp_count_current = (await pool.query(
-            `SELECT COUNT(DISTINCT Employees.emp_no) FROM Salaries 
-            RIGHT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='M' AND to_date > DATE(NOW());`
-        )).rows[0].count;
-        info.f_emp_count_current = (await pool.query(
-            `SELECT COUNT(DISTINCT Employees.emp_no) FROM Salaries 
-            RIGHT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='F' AND to_date > DATE(NOW());`
-        )).rows[0].count;
-        info.m_sal_sum_total = (await pool.query(
-            `SELECT SUM(salary) FROM Employees 
-            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='M';`
-        )).rows[0].sum;
-        info.f_sal_sum_total = (await pool.query(
-            `SELECT SUM(salary) FROM Employees 
-            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='F';`
-        )).rows[0].sum;
-        info.m_sal_sum_current = (await pool.query(
-            `SELECT SUM(Salary) FROM Salaries 
-            LEFT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='M' AND to_date > DATE(NOW());`
-        )).rows[0].sum;
-        info.f_sal_sum_current = (await pool.query(
-            `SELECT SUM(Salary) FROM Salaries 
-            LEFT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='F' AND to_date > DATE(NOW());`
-        )).rows[0].sum;
-        info.m_sal_count_total = (await pool.query(
-            `SELECT COUNT(salary) FROM Employees 
-            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='M';`
-        )).rows[0].count;
-        info.f_sal_count_total = (await pool.query(
-            `SELECT COUNT(salary) FROM Employees 
-            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
-            WHERE gender='F';`
-        )).rows[0].count;
+        const employee = await models.Employee;
+        const salary = await models.Salary;
+
+        let res = await employee.findAndCountAll({ where: { gender: 'M' } });
+        info.m_emp_count_total = res.count;
+
+        res = await employee.findAndCountAll({ where: { gender: 'F' } });
+        info.f_emp_count_total = res.count;
+        res = await salary.findAll(
+            {
+                attributes: [
+                    sequelize.fn('COUNT', sequelize.col('employee.emp_no')),
+                ], where: {
+                    to_date: { [Op.gt]: new Date(Date.now()) }
+                }, include: [{
+                    model: employee,
+                    attributes: ['emp_no', 'gender']
+                }], group: ["employee.emp_no"],
+            },
+        );
+
+        let m_val = res.filter(emp => emp.dataValues.employee.dataValues.gender == 'M');
+        info.m_emp_count_current = m_val.length;
+        info.f_emp_count_current = res.length - m_val.length;
+
+        console.log(" !-!-!");
+
+        // why is this one so slow ?
+        res = await salary.findAll(
+            {
+                attributes: [
+                    'to_date',
+                    'salary',
+                ], include: [{
+                    model: employee,
+                    attributes: ['emp_no', 'gender']
+                }],
+                group: ["employee.emp_no", "salary.salary", "salary.to_date"],
+            },);
+
+        let salaries = res.map(emp => emp.dataValues.salary);
+        let salary_sum = salaries.reduce((total, emp) => Number(total) + Number(emp));
+        let salary_count = salaries.length;
+
+        m_val = res.filter(emp => emp.dataValues.employee.dataValues.gender == 'M');
+        let m_salaries = m_val.map(emp => emp.dataValues.salary);
+        let m_sum = m_salaries.reduce((total, emp) => Number(total) + Number(emp));
+        let m_count = m_salaries.length;
+
+        info.m_sal_sum_total = m_sum;
+        info.f_sal_sum_total = salary_sum - m_sum;
+
+        let curr_salaries = res.filter(emp => new Date(emp.dataValues.to_date) > new Date(Date.now()));
+        salaries = curr_salaries.map(emp => emp.dataValues.salary);
+        salary_sum = salaries.reduce((total, emp) => Number(total) + Number(emp));
+        m_val = curr_salaries.filter(emp => emp.dataValues.employee.dataValues.gender == 'M');
+        m_salaries = m_val.map(emp => emp.dataValues.salary);
+        m_sum = m_salaries.reduce((total, emp) => Number(total) + Number(emp));
+
+        info.m_sal_sum_current = m_sum;
+        info.f_sal_sum_current = salary_sum - m_sum;
+        info.m_sal_count_total = m_count;
+        info.f_sal_count_total = salary_count - m_count;
         return info;
     } catch (err) {
         console.error("Caught: ", err.message);
@@ -104,21 +122,68 @@ async function getDepartmentsInfoModel() {
     };
 
     try {
-        const activeEmployees = (await pool.query(`
-            SELECT dept_emp.dept_no, dept_name, COUNT(DISTINCT emp_no) 
-            FROM dept_emp LEFT JOIN Departments 
-            ON dept_emp.dept_no = Departments.dept_no 
-            WHERE to_date > DATE(NOW()) GROUP BY dept_name, dept_emp.dept_no 
-            ORDER BY dept_emp.dept_no ASC;`
-        )).rows;
-        const yearlyPayroll = (await pool.query(`
-            SELECT dept_no, SUM(salary) 
-            FROM Salaries LEFT JOIN dept_emp 
-            ON Salaries.emp_no = dept_emp.emp_no 
-            WHERE dept_emp.to_date > DATE(NOW()) 
-            AND Salaries.to_date > DATE(NOW()) 
-            GROUP BY dept_no ORDER BY dept_no ASC;`
-        )).rows;
+        const salary = await models.Salary;
+        const department = await models.Department;
+        const dept_emp = await models.Dept_emp;
+
+        const res1 = await dept_emp.count({
+            attributes: [
+                'dept_emp.dept_no',
+                'department.dept_name',
+            ],
+            include: [{
+                model: department,
+                attributes: ['dept_name', 'dept_no']
+            }],
+            distinct: true,
+            col: 'emp_no',
+            group: ['dept_emp.dept_no', 'department.dept_name'],
+            order: [
+                ['dept_emp.dept_no', 'ASC'],
+            ],
+        });
+        const activeEmployees = [...res1];
+
+
+        let currSalaries = await salary.findAll({
+            where: {
+                to_date: { [Op.gt]: new Date(Date.now()) },
+            }
+        });
+        let currDepts = await dept_emp.findAll({
+            attributes: { exclude: ['departmentDeptNo'] },
+            where: {
+                to_date: { [Op.gt]: new Date(Date.now()) },
+            }
+        });
+        currSalaries = currSalaries.filter(sal =>
+            new Date(sal.dataValues.to_date) > new Date(Date.now()));
+        currDepts = currDepts.filter(dept =>
+            new Date(dept.dataValues.to_date) > new Date(Date.now()));
+        currSalaries = currSalaries.sort((a, b) =>
+            (a.emp_no > b.emp_no) ? 1 : ((b.emp_no > a.emp_no) ? -1 : 0));
+        currDepts = currDepts.sort((a, b) =>
+            (a.emp_no > b.emp_no) ? 1 : ((b.emp_no > a.emp_no) ? -1 : 0));
+
+
+        let deptSalaries = [];
+        for (let i = 0; i < currSalaries.length; i++) {
+            if (isNaN(deptSalaries[currDepts[i].dept_no])) {
+                deptSalaries[currDepts[i].dept_no] = 0;
+            } else {
+                deptSalaries[currDepts[i].dept_no] += Number(currSalaries[i].salary);
+            }
+        }
+        let yearlyPayroll = [];
+        for (const key in deptSalaries) {
+            yearlyPayroll.push({
+                dept_no: key,
+                sum: deptSalaries[key]
+            });
+        }
+        yearlyPayroll = yearlyPayroll.sort((a, b) =>
+            (a.dept_no > b.dept_no) ? 1 : ((b.dept_no > a.dept_no) ? -1 : 0));
+
 
         info.activeEmployees = activeEmployees;
         info.yearlyPayroll = yearlyPayroll;

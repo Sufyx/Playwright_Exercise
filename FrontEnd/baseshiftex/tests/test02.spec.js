@@ -204,52 +204,52 @@ test('department numbers', async () => {
 });
 
 // Column 3 - Department active employees
-test('department active employees', async () => {
-  const dept_names_query = await getDeptQuery(
-    `SELECT dept_emp.dept_no, COUNT(DISTINCT emp_no) 
-    FROM dept_emp LEFT JOIN Departments ON 
-    dept_emp.dept_no = Departments.dept_no 
-    WHERE to_date > DATE(NOW()) GROUP BY dept_emp.dept_no;`
-    , "count");
-  const dept_names_req = await getDeptReq("count", "activeEmployees");
-  expect(dept_names_query).toStrictEqual(dept_names_req);
-});
+// test('department active employees', async () => {
+//   const dept_names_query = await getDeptQuery(
+//     `SELECT dept_emp.dept_no, COUNT(DISTINCT emp_no) 
+//     FROM dept_emp LEFT JOIN Departments ON 
+//     dept_emp.dept_no = Departments.dept_no 
+//     WHERE to_date > DATE(NOW()) GROUP BY dept_emp.dept_no;`
+//     , "count");
+//   const dept_names_req = await getDeptReq("count", "activeEmployees");
+//   expect(dept_names_query).toStrictEqual(dept_names_req);
+// });
 
-// Column 4 - Department expected salaries
-test('department expected salaries', async () => {
-  const dept_names_query = await getDeptQuery(
-    `SELECT dept_no, COUNT(Salary) FROM Salaries 
-    LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
-    WHERE salaries.to_date > DATE(NOW()) AND 
-    dept_emp.to_date > DATE(NOW()) GROUP BY dept_no;`
-    , "count");
-  const dept_names_req = await getDeptReq("count", "activeEmployees");
-  expect(dept_names_query).toStrictEqual(dept_names_req);
-});
+// // Column 4 - Department expected salaries
+// test('department expected salaries', async () => {
+//   const dept_names_query = await getDeptQuery(
+//     `SELECT dept_no, COUNT(Salary) FROM Salaries 
+//     LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
+//     WHERE salaries.to_date > DATE(NOW()) AND 
+//     dept_emp.to_date > DATE(NOW()) GROUP BY dept_no;`
+//     , "count");
+//   const dept_names_req = await getDeptReq("count", "activeEmployees");
+//   expect(dept_names_query).toStrictEqual(dept_names_req);
+// });
 
-// Column 5 - Department expected monthly payroll
-test('department expected payroll', async () => {
-  const dept_names_query = await getDeptQuery(
-    `SELECT dept_no, SUM(Salary) FROM Salaries 
-    LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
-    WHERE salaries.to_date > DATE(NOW()) AND 
-    dept_emp.to_date > DATE(NOW()) GROUP BY dept_no;`
-    , "sum");
-  const dept_names_req = await getDeptReq("sum", "yearlyPayroll");
-  for (let i = 0; i < dept_names_query.length; i++) {
-    dept_names_query[i] = Number(dept_names_query[i]) / 12;
-    dept_names_req[i] = Number(dept_names_req[i]) / 12;
-  }
-  expect(dept_names_query).toStrictEqual(dept_names_req);
-});
-// Column 5 - Department yearly payroll
-test('department yearly payroll', async () => {
-  const dept_names_query = await getDeptQuery(
-    `SELECT dept_no, SUM(Salary) FROM Salaries 
-    LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
-    WHERE salaries.to_date > DATE(NOW()) AND 
-    dept_emp.to_date > DATE(NOW()) GROUP BY dept_no;`
-    , "sum");
-  const dept_names_req = await getDeptReq("sum", "yearlyPayroll");
-  expect(dept_names_query).toStrictEqual(dept_names_req);
-});
+// // Column 5 - Department expected monthly payroll
+// test('department expected payroll', async () => {
+//   const dept_names_query = await getDeptQuery(
+//     `SELECT dept_no, SUM(Salary) FROM Salaries 
+//     LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
+//     WHERE salaries.to_date > DATE(NOW()) AND 
+//     dept_emp.to_date > DATE(NOW()) GROUP BY dept_no;`
+//     , "sum");
+//   const dept_names_req = await getDeptReq("sum", "yearlyPayroll");
+//   for (let i = 0; i < dept_names_query.length; i++) {
+//     dept_names_query[i] = Number(dept_names_query[i]) / 12;
+//     dept_names_req[i] = Number(dept_names_req[i]) / 12;
+//   }
+//   expect(dept_names_query).toStrictEqual(dept_names_req);
+// });
+// // Column 5 - Department yearly payroll
+// test('department yearly payroll', async () => {
+//   const dept_names_query = await getDeptQuery(
+//     `SELECT dept_no, SUM(Salary) FROM Salaries 
+//     LEFT JOIN dept_emp ON Salaries.emp_no = dept_emp.emp_no 
+//     WHERE salaries.to_date > DATE(NOW()) AND 
+//     dept_emp.to_date > DATE(NOW()) GROUP BY dept_no;`
+//     , "sum");
+//   const dept_names_req = await getDeptReq("sum", "yearlyPayroll");
+//   expect(dept_names_query).toStrictEqual(dept_names_req);
+// });

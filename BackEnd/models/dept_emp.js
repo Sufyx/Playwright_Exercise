@@ -1,5 +1,5 @@
-const getSalaryModel = (sequelize, { DataTypes }) => {
-    const Salary = sequelize.define('salary', {
+const getDept_empModel = (sequelize, { DataTypes }) => {
+    const Dept_emp = sequelize.define('dept_emp', {
         emp_no: {
             type: DataTypes.BIGINT,
             allowNull: false,
@@ -7,8 +7,8 @@ const getSalaryModel = (sequelize, { DataTypes }) => {
                 notEmpty: true,
             },
         },
-        salary: {
-            type: DataTypes.BIGINT,
+        dept_no: {
+            type: DataTypes.CHAR,
             allowNull: false,
             validate: {
                 notEmpty: true,
@@ -29,22 +29,29 @@ const getSalaryModel = (sequelize, { DataTypes }) => {
             },
         },
     }, {
+        // freezeTableName: true,
+        tableName: 'dept_emp',
         createdAt: 'date_created',
+        underscore: true,
         timestamps: false,
         updatedAt: false,
     });
-    Salary.associate = (models) => {
-        Salary.belongsTo(models.Employee, {
+
+    Dept_emp.associate = (models) => {
+        Dept_emp.belongsTo(models.Employee, {
             foreignKey: { name: 'emp_no' }
         });
     };
-    // Salary.associate = (models) => {
-    //     Salary.belongsToMany(models.Dept_emp, { through: models.Employee }, {
-    //         foreignKey: { name: 'emp_no' }
-    //     });
+    Dept_emp.associate = (models) => {
+        Dept_emp.belongsTo(models.Department, {
+            foreignKey: { name: 'dept_no' }
+        });
+    };
+    // Dept_emp.associate = (models) => {
+    //     Dept_emp.belongsToMany(models.Salary, { through: models.Employee });
     // };
-    Salary.removeAttribute('id');
-    return Salary;
+    Dept_emp.removeAttribute('id');
+    return Dept_emp;
 }
 
-module.exports = getSalaryModel;
+module.exports = getDept_empModel;

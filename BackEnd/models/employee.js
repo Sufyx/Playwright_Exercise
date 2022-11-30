@@ -1,58 +1,63 @@
-const getEmployeeModel = ( sequelize, {DataTypes}) => {
-    const User = sequelize.define('employee', {
-        employee_no: {
-            DataTypes: DataTypes.Number,
+const getEmployeeModel = (sequelize, { DataTypes }) => {
+    const Employee = sequelize.define('employee', {
+        emp_no: {
+            type: DataTypes.BIGINT,
             unique: true,
+            primaryKey: true,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+            },
+        },
+        birth_date: {
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         first_name: {
-            DataTypes: DataTypes.String,
+            type: DataTypes.CHAR,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         last_name: {
-            DataTypes: DataTypes.String,
+            type: DataTypes.CHAR,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         gender: {
-            DataTypes: DataTypes.String,
+            type: DataTypes.CHAR,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         hire_date: {
-            DataTypes: DataTypes.Date,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
+    }, {
+        createdAt: 'date_created',
+        timestamps: false,
+        updatedAt: false,
     });
 
     Employee.associate = (models) => {
-        Employee.hasMany(models.Salaries, {onDelete: 'CASCADE'});
+        Employee.hasMany(models.Salary);
     };
     Employee.associate = (models) => {
-        Employee.hasMany(models.Departments, {onDelete: 'CASCADE'});
+        Employee.hasMany(models.Department);
     };
-
-    Employee.findByLogin = async (login) => {
-        let emp = await Employee.findOne({
-            where: {emp_no: login},
-        });
-        return emp;
-    }
-
+    Employee.removeAttribute('id');
     return Employee;
 }
 
-export default getEmployeeModel;
+module.exports = getEmployeeModel;
