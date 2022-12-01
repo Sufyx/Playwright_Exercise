@@ -8,6 +8,7 @@ const getEmployeeModel = (sequelize, { DataTypes }) => {
             validate: {
                 notEmpty: true,
             },
+            // references: {}
         },
         birth_date: {
             type: DataTypes.DATE,

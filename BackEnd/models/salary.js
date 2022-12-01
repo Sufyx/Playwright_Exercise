@@ -39,9 +39,7 @@ const getSalaryModel = (sequelize, { DataTypes }) => {
         });
     };
     // Salary.associate = (models) => {
-    //     Salary.belongsToMany(models.Dept_emp, { through: models.Employee }, {
-    //         foreignKey: { name: 'emp_no' }
-    //     });
+    //     Salary.belongsToMany(models.Dept_emp, { through: 'Employees' });
     // };
     Salary.removeAttribute('id');
     return Salary;

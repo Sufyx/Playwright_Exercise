@@ -151,7 +151,7 @@ export default function TestResults() {
                   {test.firstRun}ms
                 </Td>
                 <Td>
-                  {test.worstRunNumber}({test.worstRunTime}ms)
+                  {test.worstRunNumber} ({test.worstRunTime}ms)
                 </Td>
                 <Td>
                   {test.attempt === 0 ? 0 :

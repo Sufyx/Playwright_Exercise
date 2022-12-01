@@ -17,7 +17,7 @@ async function verifyUser(userDetails) {
     try {
         const res = await models.Employee.findOne({ where: { emp_no: emp_no } });
         const confirmId = res.dataValues;
-        
+
         if (!confirmId) {
             return false;
         }
@@ -26,89 +26,6 @@ async function verifyUser(userDetails) {
             return false;
         }
         return true;
-    } catch (err) {
-        console.error("Caught: ", err.message);
-    }
-}
-
-async function getSalariesModel() {
-    const info = {
-        m_emp_count_total: 0,
-        f_emp_count_total: 0,
-        m_emp_count_current: 0,
-        f_emp_count_current: 0,
-        m_sal_sum_total: 0,
-        f_sal_sum_total: 0,
-        m_sal_sum_current: 0,
-        f_sal_sum_current: 0,
-        m_sal_count_total: 0,
-        f_sal_count_total: 0
-    }
-    try {
-        const employee = await models.Employee;
-        const salary = await models.Salary;
-
-        let res = await employee.findAndCountAll({ where: { gender: 'M' } });
-        info.m_emp_count_total = res.count;
-
-        res = await employee.findAndCountAll({ where: { gender: 'F' } });
-        info.f_emp_count_total = res.count;
-        res = await salary.findAll(
-            {
-                attributes: [
-                    sequelize.fn('COUNT', sequelize.col('employee.emp_no')),
-                ], where: {
-                    to_date: { [Op.gt]: new Date(Date.now()) }
-                }, include: [{
-                    model: employee,
-                    attributes: ['emp_no', 'gender']
-                }], group: ["employee.emp_no"],
-            },
-        );
-
-        let m_val = res.filter(emp => emp.dataValues.employee.dataValues.gender == 'M');
-        info.m_emp_count_current = m_val.length;
-        info.f_emp_count_current = res.length - m_val.length;
-
-        console.log(" !-!-!");
-
-        // why is this one so slow ?
-        res = await salary.findAll(
-            {
-                attributes: [
-                    'to_date',
-                    'salary',
-                ], include: [{
-                    model: employee,
-                    attributes: ['emp_no', 'gender']
-                }],
-                group: ["employee.emp_no", "salary.salary", "salary.to_date"],
-            },);
-
-        let salaries = res.map(emp => emp.dataValues.salary);
-        let salary_sum = salaries.reduce((total, emp) => Number(total) + Number(emp));
-        let salary_count = salaries.length;
-
-        m_val = res.filter(emp => emp.dataValues.employee.dataValues.gender == 'M');
-        let m_salaries = m_val.map(emp => emp.dataValues.salary);
-        let m_sum = m_salaries.reduce((total, emp) => Number(total) + Number(emp));
-        let m_count = m_salaries.length;
-
-        info.m_sal_sum_total = m_sum;
-        info.f_sal_sum_total = salary_sum - m_sum;
-
-        let curr_salaries = res.filter(emp => new Date(emp.dataValues.to_date) > new Date(Date.now()));
-        salaries = curr_salaries.map(emp => emp.dataValues.salary);
-        salary_sum = salaries.reduce((total, emp) => Number(total) + Number(emp));
-        m_val = curr_salaries.filter(emp => emp.dataValues.employee.dataValues.gender == 'M');
-        m_salaries = m_val.map(emp => emp.dataValues.salary);
-        m_sum = m_salaries.reduce((total, emp) => Number(total) + Number(emp));
-
-        info.m_sal_sum_current = m_sum;
-        info.f_sal_sum_current = salary_sum - m_sum;
-        info.m_sal_count_total = m_count;
-        info.f_sal_count_total = salary_count - m_count;
-        return info;
     } catch (err) {
         console.error("Caught: ", err.message);
     }
@@ -130,20 +47,20 @@ async function getDepartmentsInfoModel() {
             attributes: [
                 'dept_emp.dept_no',
                 'department.dept_name',
-            ],
-            include: [{
+            ], where: {
+                to_date: { [Op.gt]: new Date(Date.now()) }
+            }, include: [{
                 model: department,
                 attributes: ['dept_name', 'dept_no']
             }],
-            distinct: true,
             col: 'emp_no',
+            distinct: true,
             group: ['dept_emp.dept_no', 'department.dept_name'],
             order: [
                 ['dept_emp.dept_no', 'ASC'],
             ],
         });
         const activeEmployees = [...res1];
-
 
         let currSalaries = await salary.findAll({
             where: {
@@ -195,8 +112,174 @@ async function getDepartmentsInfoModel() {
 }
 
 
+async function getSalariesModel() {
+    const info = {
+        m_emp_count_total: 0,
+        f_emp_count_total: 0,
+        m_emp_count_current: 0,
+        f_emp_count_current: 0,
+        m_sal_sum_total: 0,
+        f_sal_sum_total: 0,
+        m_sal_sum_current: 0,
+        f_sal_sum_current: 0,
+        m_sal_count_total: 0,
+        f_sal_count_total: 0
+    }
+    try {
+
+        let [results, metadata] = await sequelize.query(
+            `SELECT COUNT(emp_no) FROM Employees WHERE gender='M';`
+        );
+        info.m_emp_count_total = results[0].count;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT COUNT(emp_no) FROM Employees WHERE gender='F';`
+        );
+        info.f_emp_count_total = results[0].count;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT COUNT(DISTINCT Employees.emp_no) FROM Salaries 
+            RIGHT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='M' AND to_date > DATE(NOW());`
+        );
+        info.m_emp_count_current = results[0].count;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT COUNT(DISTINCT Employees.emp_no) FROM Salaries 
+            RIGHT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='F' AND to_date > DATE(NOW());`
+        );
+        info.f_emp_count_current = results[0].count;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT SUM(salary) FROM Employees 
+            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='M';`
+        );
+        info.m_sal_sum_total = results[0].sum;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT SUM(salary) FROM Employees 
+            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='F';`
+        );
+        info.f_sal_sum_total = results[0].sum;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT SUM(Salary) FROM Salaries 
+            LEFT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='M' AND to_date > DATE(NOW());`
+        );
+        info.m_sal_sum_current = results[0].sum;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT SUM(Salary) FROM Salaries 
+            LEFT JOIN Employees ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='F' AND to_date > DATE(NOW());`
+        );
+        info.f_sal_sum_current = results[0].sum;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT COUNT(salary) FROM Employees 
+            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='M';`
+        );
+        info.m_sal_count_total = results[0].count;
+
+        [results, metadata] = await sequelize.query(
+            `SELECT COUNT(salary) FROM Employees 
+            LEFT JOIN Salaries ON Employees.emp_no = Salaries.emp_no 
+            WHERE gender='F';`
+        );
+        info.f_sal_count_total = results[0].count;
+        
+        return info;
+    } catch (err) {
+        console.error("Caught: ", err.message);
+    }
+}
+
+
 module.exports = {
     getDepartmentsInfoModel,
     getSalariesModel,
     verifyUser
 }
+
+
+// async function getSalariesModel2() {
+//     const info = {
+//         m_emp_count_total: 0,
+//         f_emp_count_total: 0,
+//         m_emp_count_current: 0,
+//         f_emp_count_current: 0,
+//         m_sal_sum_total: 0,
+//         f_sal_sum_total: 0,
+//         m_sal_sum_current: 0,
+//         f_sal_sum_current: 0,
+//         m_sal_count_total: 0,
+//         f_sal_count_total: 0
+//     }
+//     try {
+//         const employee = await models.Employee;
+//         const salary = await models.Salary;
+//         const sals_empno = await salary.findAll({
+//             attributes: ['salary', 'emp_no', "to_date"],
+//         });
+//         const empno_gen = await employee.findAll({
+//             attributes: ['emp_no', 'gender'],
+//         });
+
+//         let gender_data = [];
+//         let m_emps = 0;
+//         let f_emps = 0;
+//         for (let i = 0; i < empno_gen.length; i++) {
+//             gender_data[empno_gen[i].emp_no] = empno_gen[i].gender;
+//             if (empno_gen[i].gender == 'M') {
+//                 m_emps++;
+//             } else {
+//                 f_emps++;
+//             }
+//         }
+//         let m_salary_sum = 0;
+//         let f_salary_sum = 0;
+//         let m_salary_count = 0;
+//         let f_salary_count = 0;
+//         let m_salary_sum_curr = 0;
+//         let f_salary_sum_curr = 0;
+//         let m_salary_count_curr = 0;
+//         let f_salary_count_curr = 0;
+//         for (let i = 0; i < sals_empno.length; i++) {
+//             if (gender_data[sals_empno[i].emp_no] == 'M') {
+//                 m_salary_sum += Number(sals_empno[i].salary);
+//                 m_salary_count++;
+//                 if (new Date(sals_empno[i].to_date) > new Date(Date.now())) {
+//                     m_salary_sum_curr += Number(sals_empno[i].salary);
+//                     m_salary_count_curr++;
+//                 }
+//             } else {
+//                 f_salary_sum += Number(sals_empno[i].salary);
+//                 f_salary_count++;
+//                 if (new Date(sals_empno[i].to_date) > new Date(Date.now())) {
+//                     f_salary_sum_curr += Number(sals_empno[i].salary);
+//                     f_salary_count_curr++;
+//                 }
+//             }
+//         }
+
+//         info.m_emp_count_total = m_emps
+//         info.f_emp_count_total = f_emps
+//         info.m_emp_count_current = m_salary_count_curr;
+//         info.f_emp_count_current = f_salary_count_curr;
+//         info.m_sal_sum_total = m_salary_sum;
+//         info.f_sal_sum_total = f_salary_sum;
+//         info.m_sal_count_total = m_salary_count;
+//         info.f_sal_count_total = f_salary_count;
+//         info.m_sal_sum_current = m_salary_sum_curr;
+//         info.f_sal_sum_current = f_salary_sum_curr;
+
+//         return info;
+//     } catch (err) {
+//         console.error("Caught: ", err.message);
+//     }
+// }

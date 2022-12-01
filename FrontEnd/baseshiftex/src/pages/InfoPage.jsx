@@ -36,14 +36,15 @@ export default function InfoPage() {
 
 
     useEffect(() => {
-        fetchInfo();
+        // fetchInfo();
+        fetchSalaries();
+        fetchDepartments();
     }, []);
 
 
-    async function fetchInfo() {
+    async function fetchSalaries() {
         setSalariesLoading(true);
-        let res = await axios.get(`http://localhost:5000/routes/salariesInfo`);
-
+        const res = await axios.get(`http://localhost:5000/routes/salariesInfo`);
         const salInfo = {
             m_emp_count_total: Number(res.data.salariesInfo.m_emp_count_total),
             f_emp_count_total: Number(res.data.salariesInfo.f_emp_count_total),
@@ -56,14 +57,14 @@ export default function InfoPage() {
             m_sal_count_total: Number(res.data.salariesInfo.m_sal_count_total),
             f_sal_count_total: Number(res.data.salariesInfo.f_sal_count_total),
         }
+
         setSalariesInfo(salariesInfo => ({ ...salInfo }));
-
         setSalariesLoading(false);
+    }
+    async function fetchDepartments() {
         setDepartmentsLoading(true);
-
-        res = await axios.get(`http://localhost:5000/routes/departmentsInfo`);
+        const res = await axios.get(`http://localhost:5000/routes/departmentsInfo`);
         const deptInfo = res.data.departmentsInfo;
-
         const deptInfoArr = [];
         for (let i = 0; i < deptInfo.activeEmployees.length; i++) {
             const line = {
@@ -77,7 +78,6 @@ export default function InfoPage() {
             }
             deptInfoArr.push(line);
         }
-
         setDepartmentsInfo(departmentsInfo => ([...deptInfoArr]));
         setDepartmentsLoading(false);
     }
@@ -232,58 +232,47 @@ export default function InfoPage() {
                         className='headerForecast'>
                         Payroll Forecast
                     </Heading>
-
                     <TableContainer bg='gray.200' fontWeight='bold'
                         boxShadow='dark-lg' borderRadius="5px" w='94%'>
-                        <Table variant='striped' colorScheme='gray'
-                            w='100%' size='lg'>
-                            <Thead>
-                                <Tr bg='gray.600'>
-                                    <Th color='white'>Department Name</Th>
-                                    <Th color='white'>Dept No.</Th>
-                                    <Th color='white'>Active Employees</Th>
-                                    <Th color='white'>Expected Salaries</Th>
-                                    <Th color='white'>Expected Payroll</Th>
-                                    <Th color='white'>Yearly Payroll</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                {departmentsInfo.map((dept, index) =>
-                                    <Tr key={uuidv4()}>
-                                        <Td id={"depts_" + index + "0"}>
-                                            <Skeleton isLoaded={!departmentsLoading}>
-                                                {dept.dept_name}
-                                            </Skeleton>
-                                        </Td>
-                                        <Td id={"depts_" + index + "1"}>
-                                            <Skeleton isLoaded={!departmentsLoading}>
-                                                {dept.dept_number}
-                                            </Skeleton>
-                                        </Td>
-                                        <Td id={"depts_" + index + "2"}>
-                                            <Skeleton isLoaded={!departmentsLoading}>
-                                                {dept.active_employees}
-                                            </Skeleton>
-                                        </Td>
-                                        <Td id={"depts_" + index + "3"}>
-                                            <Skeleton isLoaded={!departmentsLoading}>
-                                                {dept.num_of_salaries_expect}
-                                            </Skeleton>
-                                        </Td>
-                                        <Td id={"depts_" + index + "4"}>
-                                            <Skeleton isLoaded={!departmentsLoading}>
-                                                {dept.monthly_payroll}
-                                            </Skeleton>
-                                        </Td>
-                                        <Td id={"depts_" + index + "5"}>
-                                            <Skeleton isLoaded={!departmentsLoading}>
-                                                {dept.yearly_payroll}
-                                            </Skeleton>
-                                        </Td>
+                        <Skeleton isLoaded={!departmentsLoading}>
+                            <Table variant='striped' colorScheme='gray'
+                                w='100%' size='lg'>
+                                <Thead>
+                                    <Tr bg='gray.600'>
+                                        <Th color='white'>Department Name</Th>
+                                        <Th color='white'>Dept No.</Th>
+                                        <Th color='white'>Active Employees</Th>
+                                        <Th color='white'>Expected Salaries</Th>
+                                        <Th color='white'>Expected Payroll</Th>
+                                        <Th color='white'>Yearly Payroll</Th>
                                     </Tr>
-                                )}
-                            </Tbody>
-                        </Table>
+                                </Thead>
+                                <Tbody>
+                                    {departmentsInfo.map((dept, index) =>
+                                        <Tr key={uuidv4()}>
+                                            <Td id={"depts_" + index + "0"}>
+                                                {dept.dept_name}
+                                            </Td>
+                                            <Td id={"depts_" + index + "1"}>
+                                                {dept.dept_number}
+                                            </Td>
+                                            <Td id={"depts_" + index + "2"}>
+                                                {dept.active_employees}
+                                            </Td>
+                                            <Td id={"depts_" + index + "3"}>
+                                                {dept.num_of_salaries_expect}
+                                            </Td>
+                                            <Td id={"depts_" + index + "4"}>
+                                                {dept.monthly_payroll}
+                                            </Td>
+                                            <Td id={"depts_" + index + "5"}>
+                                                {dept.yearly_payroll}
+                                            </Td>
+                                        </Tr>
+                                    )}
+                                </Tbody>
+                            </Table>
+                        </Skeleton>
                     </TableContainer>
                 </VStack>
 

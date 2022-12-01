@@ -3,7 +3,7 @@
 A simple exercise for presenting and testing data related to a company and it's employees/departments/etc. 
 
 The database is in SQL from a provided Docker image.
-The implementation is in React, Node and Postgres.
+The implementation is in React, Node and Postgres and Sequelize.
 The testing is in Playwright.
 
  To login you may use the following details:
@@ -43,7 +43,7 @@ Login with the following details:
   - You should see several tables featuring data (it could take a little while to load). If the page or the data in the tables fails to load, the tests will not work either. See if there are any errors in the terminals, and make sure the server is running and connection is not refused.
 
 - With the page still up, go to the terminal at `FrontEnd\baseshiftex` to run tests
-  - For example: `npx playwright test -g "Departments" --repeat-each 5`
+  - For example: `npx playwright test -g "login" --repeat-each 3`
   
 - - -
 Hope this works :)

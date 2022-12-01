@@ -3,7 +3,7 @@
 A simple exercise for presenting and testing data related to a company and it's employees/departments/etc. 
 
 The database is in SQL from a provided Docker image.
-The implementation is in React, Node and Postgres.
+The implementation is in React, Node, Postgres and Sequelize.
 The testing is in Playwright.
 
  To login you may use the following details:
