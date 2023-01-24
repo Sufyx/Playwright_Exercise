@@ -1,7 +1,6 @@
 /**
  * 27/11/2022
  * Asaf Gilboa
- * Baseshift interview exercise 
  */
 
 const { test, expect } = require('@playwright/test');

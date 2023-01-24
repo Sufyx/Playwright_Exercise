@@ -1,3 +1,4 @@
+
 const getEmployeeModel = (sequelize, { DataTypes }) => {
     const Employee = sequelize.define('employee', {
         emp_no: {

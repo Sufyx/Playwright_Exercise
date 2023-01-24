@@ -1,3 +1,4 @@
+
 const getSalaryModel = (sequelize, { DataTypes }) => {
     const Salary = sequelize.define('salary', {
         emp_no: {

@@ -1,7 +1,6 @@
 /**
  * 21/11/2022
  * Asaf Gilboa
- * Baseshift interview exercise 
  */
 
 const { sequelize, models } = require('./models');
@@ -56,9 +55,7 @@ async function getDepartmentsInfoModel() {
             col: 'emp_no',
             distinct: true,
             group: ['dept_emp.dept_no', 'department.dept_name'],
-            order: [
-                ['dept_emp.dept_no', 'ASC'],
-            ],
+            order: [['dept_emp.dept_no', 'ASC'],],
         });
         const activeEmployees = [...res1];
 
@@ -81,7 +78,6 @@ async function getDepartmentsInfoModel() {
             (a.emp_no > b.emp_no) ? 1 : ((b.emp_no > a.emp_no) ? -1 : 0));
         currDepts = currDepts.sort((a, b) =>
             (a.emp_no > b.emp_no) ? 1 : ((b.emp_no > a.emp_no) ? -1 : 0));
-
 
         let deptSalaries = [];
         for (let i = 0; i < currSalaries.length; i++) {
@@ -192,7 +188,7 @@ async function getSalariesModel() {
             WHERE gender='F';`
         );
         info.f_sal_count_total = results[0].count;
-        
+
         return info;
     } catch (err) {
         console.error("Caught: ", err.message);

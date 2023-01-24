@@ -1,3 +1,4 @@
+
 const getDepartmentModel = (sequelize, { DataTypes }) => {
     const Department = sequelize.define('department', {
         dept_no: {
