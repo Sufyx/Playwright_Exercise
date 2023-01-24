@@ -40,7 +40,7 @@ Login with the following details:
   - Password: **1953-09-02**
 
 - At this point you should be redirected to `http://localhost:3000/information_page`
-  - You should see several tables featuring data (it could take a little while to load). If the page or the data in the tables fails to load, the tests will not work either. See if there are any errors in the terminals, and make sure the server is running and connection is not refused.
+  - You should see several tables featuring data (it could take a little while to load). If the page or the data in the tables fails to load, the tests will not work either. See if there are any errors in the terminals, and make sure the server is running and connection is not refused. On Docker, make sure "diegmonti/test_db" image is in use, and the container is running.
 
 - With the page still up, go to the terminal at `FrontEnd\baseshiftex` to run tests
   - For example: `npx playwright test -g "login" --repeat-each 3`
