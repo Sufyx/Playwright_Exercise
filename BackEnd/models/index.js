@@ -16,8 +16,6 @@ const sequelize = new Sequelize(devConfig.database, devConfig.username, devConfi
     port: 5433,
     logging: false
   });
-// diegmonti/test_db
-// const sequelize = new Sequelize('postgres://user:pass@example.com:5433/dbname')
 
 const models = {
   Employee: getEmployeeModel(sequelize, Sequelize),

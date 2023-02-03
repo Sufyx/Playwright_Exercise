@@ -48,9 +48,7 @@ const getDept_empModel = (sequelize, { DataTypes }) => {
             foreignKey: { name: 'dept_no' }
         });
     };
-    // Dept_emp.associate = (models) => {
-    //     Dept_emp.belongsToMany(models.Salary, { through: models.Employee });
-    // };
+
     Dept_emp.removeAttribute('id');
     return Dept_emp;
 }
